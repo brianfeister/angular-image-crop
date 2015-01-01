@@ -1019,6 +1019,11 @@
             var tempCanvasContext = tempCanvas.getContext('2d');
             tempCanvasContext.drawImage($finalImg, -50, -50);
 
+            if( navigator.userAgent.match(/iphone/i) ) {
+              var mpImg = new MegaPixImage(img);
+              mpImg.render(tempCanvas, { quality: 0.8});
+            }
+
             $elm.getElementsByClassName('image-crop-section-final')[0].appendChild(tempCanvas);
             scope.result = tempCanvas.toDataURL();
             scope.$apply();
